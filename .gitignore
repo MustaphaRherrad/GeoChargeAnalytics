@@ -1,0 +1,13 @@
+# Fichiers à ignorer
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.ipynb_checkpoints/
+data/processed/
+data/interim/
+data/samples/
+.env
+*.sqlite3
+.DS_Store
+geocharge-env/
