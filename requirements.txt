@@ -1,0 +1,11 @@
+dbfread
+pandas
+numpy
+requests
+plotly
+scikit-learn
+jupyter
+pyyaml
+xlrd
+geopandas
+contextily

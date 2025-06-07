@@ -49,8 +49,70 @@ Avant l’analyse, les opérations suivantes ont été appliquées :
 - **Accessibilité** : horaires d’ouverture, accessibilité PMR, gratuité
 - **Exploitant / Opérateur** : nom, statut, réseau
 
+### Recoupement avec des données de l'INSEE pour la géolocalisation
+Pour améliorer la contextualisation géographique et enrichir les métadonnées locales (comme le nom des communes), nous exploitons également un fichier de correspondance des communes fourni par l'INSEE :
+
+- 🗂️ **Fichier INSEE :** `v_commune_2023.dbf` (format DBF, 6 Mo)
+- 📍 Contenu : correspondances entre codes INSEE (`code_insee_commune`) et noms des communes (`nom_commune`), ainsi que des informations complémentaires sur les départements, cantons et régions.
+- 🌐 Source officielle : [https://www.insee.fr/fr/information/6800675](https://www.insee.fr/fr/information/6800675)
+
+Ce fichier est situé dans le dossier `./data/raw/` du projet, et est automatiquement fusionné avec les données IRVE dans le pipeline de traitement pour compléter les localisations manquantes dans les cartes régionales.
+
+
 ### 📌 Mise à jour
-Le jeu de données est régulièrement mis à jour sur data.gouv.fr. La version utilisée dans ce projet a été téléchargée le : **[06/06/2025]**.
+Le jeu de données principal est régulièrement mis à jour sur data.gouv.fr. La version utilisée dans ce projet a été téléchargée le : **[06/06/2025]**.
+
+
+### Qualité des Données et Traitement des Erreurs
+
+#### Problèmes identifiés
+1. **Extraction du nom de la ville**
+
+* **Cas particulier : adresse terminant par un chiffre**
+
+ * Exemple :
+ Parking Casino, 51269 Giffaumont Champaubert 1
+
+ * Problème :
+ Le chiffre final est considéré comme faisant partie du nom de la ville, ce qui conduit à une  extraction incorrecte (ex : Champaubert 1 au lieu de Giffaumont Champaubert).
+
+ * Statut :
+Non corrigé automatiquement (2 lignes concernées).
+
+2. **Extraction du code postal**
+
+* **Codes postaux incorrects ou incomplets**
+
+ * Exemple :
+ 4240 SAINT-CHAMOND, 51 SUIPPES, 5& VERZY
+
+ * Problème :
+ Les codes postaux comportant moins de 5 chiffres ou des caractères non numériques ne sont pas extraits correctement.
+ 72 lignes concernées : la colonne code_postal reste alors vide pour ces adresses.
+
+ * Statut :
+ Non corrigé automatiquement.
+
+#### Actions réalisées
+* Suppression des codes d’autoroute dans l’adresse avant extraction.
+
+* Suppression des codes postaux dupliqués.
+
+* Extraction robuste du nom de la ville (gestion des apostrophes, tirets, abréviations courantes).
+
+* Extraction du code postal uniquement si celui-ci est valide (5 chiffres).
+
+* Extraction du nom de la ville à partir du dernier mot/groupe de l’adresse en cas d’absence de code postal valide (méthode de repli).
+
+#### Perspectives
+* Pour les adresses terminant par un chiffre :
+
+ * Une solution manuelle ou une règle spécifique pourrait être ajoutée pour ignorer les chiffres finaux lors de l’extraction du nom de la ville.
+
+* Pour les codes postaux incorrects :
+
+ * Une vérification manuelle ou une correction automatisée (si possible) pourrait être envisagée pour les cas restants.
+
 
 ---
 
@@ -144,7 +206,7 @@ le dossier `geocharge/` doit contenir :
 * `analysis.py`
 * `visualization.py`
 
-Et dans la racine, il fauts avoir :
+Et dans la racine, il faut avoir :
 
 * `main.py`
 * le dossier `data/` avec le fichier `irve.csv`
