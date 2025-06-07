@@ -87,12 +87,14 @@ pip install -r requirements.txt
 jupyter notebook
 ```
 ---
-## 📍 Cartes interactives
+## 🗺️ Cartes interactives
 
 - 🔗 [Carte nationale](https://MustaphaRherrad.github.io/GeoChargeAnalytics/map.html)
-- 🗼 [Carte Paris](https://MustaphaRherrad.github.io/GeoChargeAnalytics/map_paris.html)
-- 🦁 [Carte Lyon](https://MustaphaRherrad.github.io/GeoChargeAnalytics/map_lyon.html)
-- 🍷 [Carte Bordeaux](https://MustaphaRherrad.github.io/GeoChargeAnalytics/map_bordeaux.html)
+- 🗼 [Carte de chaleur - Paris](https://MustaphaRherrad.github.io/GeoChargeAnalytics/heatmap_paris.html)
+- 🦁 [Carte de chaleur - Lyon](https://MustaphaRherrad.github.io/GeoChargeAnalytics/heatmap_lyon.html)
+- 🌊 [Carte de chaleur - Marseille](https://MustaphaRherrad.github.io/GeoChargeAnalytics/heatmap_marseille.html)
+- 🍷 [Carte de chaleur - Bordeaux](https://MustaphaRherrad.github.io/GeoChargeAnalytics/heatmap_bordeaux.html)
+- 🏙️ [Carte de chaleur - Île-de-France](https://MustaphaRherrad.github.io/GeoChargeAnalytics/heatmap_idf.html)
 
 ---
 
