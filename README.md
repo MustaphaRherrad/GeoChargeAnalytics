@@ -26,12 +26,12 @@ Le projet suit une approche rigoureuse en quatre grandes étapes :
 
 ## 📦 Données
 
-Ce projet s’appuie sur les données ouvertes relatives aux infrastructures de recharge pour véhicules électriques (IRVE) en France. Ces données sont fournies par le gouvernement français via le portail [data.gouv.fr](https://www.data.gouv.fr/fr/datasets/).
+Ce projet s’appuie sur les données ouvertes relatives aux infrastructures de recharge pour véhicules électriques (IRVE) en France. Ces données sont fournies par le gouvernement français via le portail [data.gouv.fr](https://www.data.gouv.fr/fr/datasets/)🔗.
 
 ### 🗃️ Source principale
 - **Jeu de données** : Bornes de recharge pour véhicules électriques - Données ouvertes
 - **Fournisseur** : Ministère de la Transition écologique
-- **Lien direct** : [https://www.data.gouv.fr/fr/datasets/infrastructures-de-recharge-pour-vehicules-electriques-irve/](https://www.data.gouv.fr/fr/datasets/infrastructures-de-recharge-pour-vehicules-electriques-irve/)
+- **Lien direct** : [https://www.data.gouv.fr/fr/datasets/infrastructures-de-recharge-pour-vehicules-electriques-irve/](https://www.data.gouv.fr/fr/datasets/infrastructures-de-recharge-pour-vehicules-electriques-irve/)🔗
 - **Format** : CSV (compressé au format ZIP)
 - **Licence** : Licence Ouverte / Etalab 2.0
 
@@ -50,7 +50,7 @@ Avant l’analyse, les opérations suivantes ont été appliquées :
 - **Exploitant / Opérateur** : nom, statut, réseau
 
 ### 📌 Mise à jour
-Le jeu de données est régulièrement mis à jour sur data.gouv.fr. La version utilisée dans ce projet a été téléchargée le : **[à compléter avec la date de ton fichier]**.
+Le jeu de données est régulièrement mis à jour sur data.gouv.fr. La version utilisée dans ce projet a été téléchargée le : **[06/06/2025]**.
 
 ---
 
@@ -86,6 +86,14 @@ cd GeoChargeAnalytics
 pip install -r requirements.txt
 jupyter notebook
 ```
+---
+## 📍 Cartes interactives
+
+- 🔗 [Carte nationale](https://MustaphaRherrad.github.io/GeoChargeAnalytics/map.html)
+- 🗼 [Carte Paris](https://MustaphaRherrad.github.io/GeoChargeAnalytics/map_paris.html)
+- 🦁 [Carte Lyon](https://MustaphaRherrad.github.io/GeoChargeAnalytics/map_lyon.html)
+- 🍷 [Carte Bordeaux](https://MustaphaRherrad.github.io/GeoChargeAnalytics/map_bordeaux.html)
+
 ---
 
 ## 🔄 Exécution sur machine locale
