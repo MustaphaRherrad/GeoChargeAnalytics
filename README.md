@@ -31,15 +31,16 @@ Ce projet s’appuie sur les données ouvertes relatives aux infrastructures de 
 ### 🗃️ Source principale
 - **Jeu de données** : Bornes de recharge pour véhicules électriques - Données ouvertes
 - **Fournisseur** : Ministère de la Transition écologique
-- **Lien direct** : [https://www.data.gouv.fr/fr/datasets/infrastructures-de-recharge-pour-vehicules-electriques-irve/](https://www.data.gouv.fr/fr/datasets/infrastructures-de-recharge-pour-vehicules-electriques-irve/)🔗
-- **Format** : CSV (compressé au format ZIP)
+- **Lien direct** : [https://www.data.gouv.fr/fr/datasets/fichier-consolide-des-bornes-de-recharge-pour-vehicules-electriques/](https://www.data.gouv.fr/fr/datasets/fichier-consolide-des-bornes-de-recharge-pour-vehicules-electriques/)🔗
+- **Taille** : 82,1 Mo
+- **Format** : CSV
+- **Nombre de lignes**: 129065
 - **Licence** : Licence Ouverte / Etalab 2.0
 
 ### 🧹 Pré-traitement des données
 Avant l’analyse, les opérations suivantes ont été appliquées :
 - Nettoyage des doublons et lignes vides
 - Standardisation des formats (coordonnées, dates, noms de colonnes)
-- Suppression du dossier `_MACOSX` et des fichiers systèmes inutiles
 - Géocodage et enrichissement des données géographiques
 - Formatage des puissances et des types de bornes
 
@@ -58,9 +59,11 @@ Pour améliorer la contextualisation géographique et enrichir les métadonnées
 
 Ce fichier est situé dans le dossier `./data/raw/` du projet, et est automatiquement fusionné avec les données IRVE dans le pipeline de traitement pour compléter les localisations manquantes dans les cartes régionales.
 
+Malheureusement, le recoupement n'a pas été possible puisque la colonne du Code_ISEE pour les communes n'est pas suffisament renseignée dans le fichier de données des bornes.
+
 
 ### 📌 Mise à jour
-Le jeu de données principal est régulièrement mis à jour sur data.gouv.fr. La version utilisée dans ce projet a été téléchargée le : **[06/06/2025]**.
+Le jeu de données principal est régulièrement mis à jour sur data.gouv.fr. La version utilisée dans ce projet a été téléchargée le : **[08/06/2025]**.
 
 
 ### Qualité des Données et Traitement des Erreurs

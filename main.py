@@ -7,7 +7,7 @@ from geocharge.regions import extract_departement, filter_by_ville, CENTROIDS
 
 def main():
     # Chargement et nettoyage des données
-    df = load_data("data/raw/1-irve-statique.csv")
+    df = load_data("data/raw/consolidation-etalab-schema-irve-statique-v-2.3.1-20250608.csv")
     df = clean_data(df)
     df = extract_departement(df)
 
