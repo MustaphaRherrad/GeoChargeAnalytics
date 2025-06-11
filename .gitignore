@@ -12,3 +12,4 @@ data/samples/
 *.sqlite3
 .DS_Store
 geocharge-env/
+docs/map.html
