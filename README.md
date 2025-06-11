@@ -154,7 +154,7 @@ jupyter notebook
 ---
 ## 🗺️ Cartes interactives
 
-- 🔗 [Carte nationale](https://MustaphaRherrad.github.io/GeoChargeAnalytics/map.html)
+- 🔗 [Carte nationale](https://iana-data.org/html_pages/map.html) La carte nationale comporte plus de 200000 données ce qui va ralentir relativement son chargement en fonction de votre débit internet. Je vous incite à patienter jusqu'à sa mise en cache. Ainsi vous pourrez visualiser sur la carte de France tous les emplacements des bornes de charge se trouvant sur le territoire nationale.
 - 🗼 [Carte de chaleur - Paris](https://MustaphaRherrad.github.io/GeoChargeAnalytics/heatmap_paris.html)
 - 🦁 [Carte de chaleur - Lyon](https://MustaphaRherrad.github.io/GeoChargeAnalytics/heatmap_lyon.html)
 - 🌊 [Carte de chaleur - Marseille](https://MustaphaRherrad.github.io/GeoChargeAnalytics/heatmap_marseille.html)
