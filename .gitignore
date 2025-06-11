@@ -11,6 +11,7 @@ data/samples/
 .env
 *.sqlite3
 .DS_Store
+prompt-ia.txt
 geocharge-env/
 docs/map.html
 docs/map.html
