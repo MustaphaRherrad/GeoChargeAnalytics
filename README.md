@@ -162,6 +162,8 @@ jupyter notebook
 - 🍷 [Carte de chaleur - Bordeaux](https://MustaphaRherrad.github.io/GeoChargeAnalytics/heatmap_bordeaux.html)
 - 🏙️ [Carte de chaleur - Île-de-France](https://MustaphaRherrad.github.io/GeoChargeAnalytics/heatmap_idf.html)
 
+Les cartes de chaleur région IDF et grandes villes ne sont pas finalisés et vont pas être finalisés dans ce repo. En raison de la mauvaise qualité des données, et du caractère payant des opérations automatiques de géocodage, j'ai préféré arrêté ce projet à ce stade.
+Néanmoins, les étapes pour améliorer la qualité des données ont été documentées dans [ce_document](docs/data_quality.md). Dans un cadre professionnel, les solutions sont évidentes et relativement efficaces.
 ---
 
 ## 🔄 Exécution sur machine locale
