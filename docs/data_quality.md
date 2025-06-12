@@ -193,8 +193,91 @@ def enhanced_preclean_address(adresse: str) -> str:
     ]
     
     # [...] (le reste de la fonction existante)
+```
+---
+### 3. Stratégie de traitement
 
-    ```
+| Type d'adresse | Solution | Exemple de sortie |
+|----------------|----------|-------------------|
+| Suffixe "-France" | Conserver le motif | `TREMBLAY-EN-FRANCE 93290` |
+| Code postal seul | Jointure INSEE | `59630 -> SAINTE-MARIE-KERQUE` |
+| Format inversé | Réorganisation | `PARIS 75116 -> 75116 PARIS` |
+| Adresse incomplète | Géocodage externe | `1002 AV DE LA RÉPUBLIQUE -> (via API BAN)` |
+
+## Roadmap proposée
+
+### Phase 1 - Nettoyage (1 jour)
+- [ ] Implémenter `enhanced_preclean_address()`
+- [ ] Créer un dictionnaire des codes postaux → villes
+- [ ] Générer un rapport des adresses non traitées
+
+### Phase 2 - Enrichissement (2 jours)
+1. **Intégration données INSEE** :
+```python
+   import geopandas as gpd
+   communes = gpd.read_file('data/external/v_commune_2023.dbf')
+   df = df.merge(communes[['INSEE_COM', 'NOM_COM']], 
+                 left_on='code_postal', 
+                 right_on='INSEE_COM', 
+                 how='left')
+```
+
+2. **Géocodage des adresses incomplètes** :
+   ```python
+   from geopy.geocoders import BANFrance
+   geolocator = BANFrance(user_agent="geocharge")
+   def geocode_missing(row):
+       if pd.isna(row['ville']):
+           location = geolocator.geocode(row['adresse_clean'])
+           return location.address if location else None
+   ```
+
+### Phase 3 - Validation (1 jour)
+- [ ] Vérifier la couverture par département
+- [ ] Analyser les résidus non traités
+- [ ] Exporter les données nettoyées vers PostgreSQL
+
+## Métriques de qualité
+
+| Métrique | Avant | Objectif |
+|----------|-------|----------|
+| Adresses complètes | 72% | 95% |
+| Villes valides | 68% | 98% |
+| Codes postaux valides | 90% | 99.9% |
+| Coordonnées précises | 99% | 99.9% |
+
+## Fichiers de travail
+- `notebooks/1_Address_Cleaning.ipynb` : Exploration interactive
+- `data/processed/adresses_manquantes.csv` : Cas à traiter manuellement
+- `src/utils/geo_helpers.py` : Fonctions de nettoyage
+
+
+
+## Prochaines étapes concrètes
+
+1. **Mettre en place l'amélioration du prétraitement** :
+   ```bash
+   git checkout -b feature/address-cleaning
+   # Modifier le fichier preprocessing.py
+   ```
+
+2. **Tester sur un échantillon** :
+   ```python
+   sample = df.sample(1000)
+   sample['adresse_clean'] = sample['adresse_station'].apply(enhanced_preclean_address)
+   sample.to_excel('data/validation/test_cleaning_v2.xlsx')
+   ```
+
+3. **Préparer l'intégration INSEE** :
+   ```bash
+   wget https://www.insee.fr/fr/statistiques/fichier/4316069/v_commune_2023.dbf -P data/external/
+   ```
+
+4. **Planifier le géocodage** :
+   - Créer un compte sur [adresse.data.gouv.fr](https://adresse.data.gouv.fr/api)
+   - Limiter à 50 requêtes/minute (batch nocturne)
+
+Cette approche systématique permettra de traiter 95% des cas automatiquement, les 5% restants nécessitant une validation manuelle ou des requêtes API spécifiques.
 ---
 
 *Dernière mise à jour : {12/06/2025}*
